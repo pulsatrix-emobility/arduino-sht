@@ -26,8 +26,8 @@
  *  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <inttypes.h>
 #include <Arduino.h>
+#include <inttypes.h>
 
 #include "SHTSensor.h"
 
@@ -166,8 +166,8 @@ private:
   static const uint16_t SHT3X_ACCURACY_LOW     = 0x2416;
 
   static const uint8_t SHT3X_ACCURACY_HIGH_DURATION   = 15;
-  static const uint8_t SHT3X_ACCURACY_MEDIUM_DURATION = 6;
-  static const uint8_t SHT3X_ACCURACY_LOW_DURATION    = 4;
+  static const uint8_t SHT3X_ACCURACY_MEDIUM_DURATION = 10;  // Currently minimum possible delay = 10ms
+  static const uint8_t SHT3X_ACCURACY_LOW_DURATION    = 10;  // Currently minimum possible delay = 10ms
 
 public:
   static const uint8_t SHT3X_I2C_ADDRESS_44 = 0x44;
@@ -329,6 +329,8 @@ bool SHTSensor::init(TwoWire & wire)
 
   // to finish the initialization, attempt to read to make sure the communication works
   // Note: readSample() will check for a NULL mSensor in case auto detect failed
+  // But first, set a default accuracy or else readSample() will fail anyway.
+  setAccuracy(SHTSensor::SHT_ACCURACY_MEDIUM);
   return readSample();
 }
 
