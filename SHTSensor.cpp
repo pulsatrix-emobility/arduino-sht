@@ -165,9 +165,9 @@ private:
   static const uint16_t SHT3X_ACCURACY_MEDIUM  = 0x240b;
   static const uint16_t SHT3X_ACCURACY_LOW     = 0x2416;
 
-  static const uint8_t SHT3X_ACCURACY_HIGH_DURATION   = 25;
-  static const uint8_t SHT3X_ACCURACY_MEDIUM_DURATION = 15;  // Currently minimum possible delay = 10ms
-  static const uint8_t SHT3X_ACCURACY_LOW_DURATION    = 15;  // Currently minimum possible delay = 10ms
+  static const uint8_t SHT3X_ACCURACY_HIGH_DURATION   = 35;
+  static const uint8_t SHT3X_ACCURACY_MEDIUM_DURATION = 25;  // Currently minimum possible delay = 10ms
+  static const uint8_t SHT3X_ACCURACY_LOW_DURATION    = 25;  // Currently minimum possible delay = 10ms
 
 public:
   static const uint8_t SHT3X_I2C_ADDRESS_44 = 0x44;
